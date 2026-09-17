@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 12mm 15mm;
+      background-color: #f8fafc;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      color: #1e293b;
+      background-color: #f8fafc;
+      font-size: 8.5pt;
+      line-height: 1.5;
+    }
+
+    /* Header Nav */
+    .header-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #0284c7;
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
+    .brand-logo {
+      font-size: 11pt;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: 0.5px;
+    }
+    .brand-logo span {
+      color: #0284c7;
+    }
+    .badge-year {
+      background: #e0f2fe;
+      color: #0369a1;
+      font-size: 7.5pt;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 12px;
+      text-transform: uppercase;
+    }
+
+    /* Hero Banner */
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0369a1 100%);
+      color: #ffffff;
+      padding: 24px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+    }
+    .hero-tag {
+      color: #38bdf8;
+      font-size: 8pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .hero h1 {
+      font-size: 18pt;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+    .hero-sub {
+      font-size: 9pt;
+      color: #cbd5e1;
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+
+    /* Key Stats Grid */
+    .stats-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 8px 0;
+    }
+    .stat-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 10px 8px;
+      border-radius: 8px;
+      text-align: center;
+      width: 25%;
+    }
+    .stat-val {
+      font-size: 12pt;
+      font-weight: 800;
+      color: #38bdf8;
+      display: block;
+    }
+    .stat-lbl {
+      font-size: 7pt;
+      color: #94a3b8;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* Section Component */
+    .section-title {
+      font-size: 12pt;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 12px;
+      padding-left: 8px;
+      border-left: 4px solid #0284c7;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Visual Grid Cards with SVG Illustrations */
+    .grid-2col {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 12px;
+      margin-bottom: 16px;
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 14px;
+      vertical-align: top;
+    }
+    .card-icon-box {
+      width: 36px;
+      height: 36px;
+      background: #f0f9ff;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+    .card h3 {
+      font-size: 10pt;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+    .card p {
+      font-size: 8pt;
+      color: #64748b;
+      line-height: 1.45;
+    }
+
+    /* Step Process Block */
+    .pipeline-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 8px;
+      margin-bottom: 20px;
+    }
+    .pipeline-step {
+      width: 20%;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-top: 4px solid #0284c7;
+      border-radius: 8px;
+      padding: 10px 8px;
+      vertical-align: top;
+      text-align: center;
+    }
+    .step-num {
+      font-size: 7.5pt;
+      font-weight: 800;
+      color: #0284c7;
+      background: #e0f2fe;
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+    .step-title {
+      font-size: 8.5pt;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+    .step-desc {
+      font-size: 7pt;
+      color: #64748b;
+      line-height: 1.3;
+    }
+
+    /* Page Break */
+    .page-break {
+      page-break-before: always;
+    }
+
+    /* Trust & Security Dark Card */
+    .security-banner {
+      background: #0f172a;
+      color: #ffffff;
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+    .security-banner h3 {
+      color: #38bdf8;
+      font-size: 11pt;
+      font-weight: 800;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    .sec-grid {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 12px 0;
+    }
+    .sec-item {
+      width: 33.33%;
+      vertical-align: top;
+    }
+    .sec-item h4 {
+      font-size: 8.5pt;
+      color: #f1f5f9;
+      margin-bottom: 4px;
+      font-weight: 700;
+    }
+    .sec-item p {
+      font-size: 7.5pt;
+      color: #94a3b8;
+      line-height: 1.35;
+    }
+
+    /* FAQ List */
+    .faq-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 10px;
+      margin-bottom: 20px;
+    }
+    .faq-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 12px;
+      width: 50%;
+      vertical-align: top;
+    }
+    .faq-q {
+      font-size: 8.5pt;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+    .faq-a {
+      font-size: 8pt;
+      color: #64748b;
+      line-height: 1.4;
+    }
+
+    /* CTA Box */
+    .cta-box {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      margin-top: 10px;
+    }
+    .cta-box h2 {
+      font-size: 13pt;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .cta-box p {
+      font-size: 8.5pt;
+      color: #e0f2fe;
+      margin-bottom: 12px;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: #ffffff;
+      color: #0369a1;
+      font-weight: 800;
+      font-size: 9pt;
+      padding: 8px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE 1: PROGRAM OVERVIEW & PROCESS -->
+
+  <!-- NAV -->
+  <div class="header-nav">
+    <div class="brand-logo">GLOBAL MERCHANT <span>NETWORK</span></div>
+    <div class="badge-year">OFFICIAL PROGRAM 2026</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="hero-tag">ENTERPRISE E-COMMERCE COLLABORATION</span>
+    <h1>Palawan Remote Merchant Partner Program</h1>
+    <div class="hero-sub">
+      Establish a legitimate, high-reward passive income stream via global cross-border e-commerce networks. Lock in an immediate onboarding bonus plus monthly store rental payouts with zero personal capital required.
+    </div>
+
+    <!-- STATS -->
+    <table class="stats-table">
+      <tr>
+        <td class="stat-card">
+          <span class="stat-val">₱5,000+</span>
+          <span class="stat-lbl">Instant Approval Bonus</span>
+        </td>
+        <td class="stat-card">
+          <span class="stat-val">Monthly</span>
+          <span class="stat-lbl">Guaranteed Rent Payout</span>
+        </td>
+        <td class="stat-card">
+          <span class="stat-val">100% Zero</span>
+          <span class="stat-lbl">Out-Of-Pocket Expense</span>
+        </td>
+        <td class="stat-card">
+          <span class="stat-val">Zero Risk</span>
+          <span class="stat-lbl">Full Liability Protection</span>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- SECTION: PROGRAM OVERVIEW -->
+  <div class="section-title">Program Architecture & Operations</div>
+
+  <table class="grid-2col">
+    <tr>
+      <td class="card" style="width: 50%;">
+        <!-- SVG Icon: Global Trade -->
+        <svg class="card-icon-box" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="2" y1="12" x2="22" y2="12"></line>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
+        <h3>Cross-Border E-Commerce Expansion</h3>
+        <p>Our merchant collective manages operational storefronts across major overseas platforms like Etsy. Due to international trade regulations, compliant storefronts require identity verification from residents in approved regions like the Philippines.</p>
+      </td>
+
+      <td class="card" style="width: 50%;">
+        <!-- SVG Icon: Merchant Capital -->
+        <svg class="card-icon-box" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2">
+          <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+          <line x1="2" y1="10" x2="22" y2="10"></line>
+        </svg>
+        <h3>Fully Funded Capital Structure</h3>
+        <p>Our backend team handles 100% of the operational capital, marketing ad spend, product sourcing, warehousing, and international logistics. Partners bear zero operational expenses or debt liability.</p>
+      </td>
+    </tr>
+  </table>
+
+  <!-- SECTION: PIPELINE -->
+  <div class="section-title">5-Stage Onboarding Process</div>
+
+  <table class="pipeline-table">
+    <tr>
+      <td class="pipeline-step">
+        <span class="step-num">STAGE 01</span>
+        <!-- SVG Step 1 -->
+        <div style="margin: 6px 0;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+          </svg>
+        </div>
+        <div class="step-title">Direct Outreach</div>
+        <div class="step-desc">Connect with regional lead via WhatsApp to verify slot availability.</div>
+      </td>
+
+      <td class="pipeline-step">
+        <span class="step-num">STAGE 02</span>
+        <!-- SVG Step 2 -->
+        <div style="margin: 6px 0;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2">
+            <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+            <circle cx="9" cy="10" r="2"></circle>
+            <line x1="15" y1="8" x2="17" y2="8"></line>
+            <line x1="15" y1="12" x2="17" y2="12"></line>
+          </svg>
+        </div>
+        <div class="step-title">ID Preparation</div>
+        <div class="step-desc">Prepare 1 valid Ph government ID (PhilID, UMID, Passport, Driver's).</div>
+      </td>
+
+      <td class="pipeline-step">
+        <span class="step-num">STAGE 03</span>
+        <!-- SVG Step 3 -->
+        <div style="margin: 6px 0;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+        </div>
+        <div class="step-title">Identity Validation</div>
+        <div class="step-desc">Complete 1-hour official seller verification with staff guidance.</div>
+      </td>
+
+      <td class="pipeline-step">
+        <span class="step-num">STAGE 04</span>
+        <!-- SVG Step 4 -->
+        <div style="margin: 6px 0;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2">
+            <line x1="12" y1="1" x2="12" y2="23"></line>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+          </svg>
+        </div>
+        <div class="step-title">Instant Payout</div>
+        <div class="step-desc">Receive ₱5,000–₱10,000 bonus via GCash, Maya, or direct bank transfer.</div>
+      </td>
+
+      <td class="pipeline-step">
+        <span class="step-num">STAGE 05</span>
+        <!-- SVG Step 5 -->
+        <div style="margin: 6px 0;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2">
+            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+            <polyline points="17 6 23 6 23 12"></polyline>
+          </svg>
+        </div>
+        <div class="step-title">Monthly Allowance</div>
+        <div class="step-desc">Lock in fixed 30-day rental checks plus performance profit shares.</div>
+      </td>
+    </tr>
+  </table>
+
+  <!-- PAGE BREAK FOR SPACIOUS MULTI-PAGE LAYOUT -->
+  <div class="page-break"></div>
+
+  <!-- PAGE 2: ADVANTAGES, SECURITY & FAQ -->
+
+  <div class="header-nav">
+    <div class="brand-logo">GLOBAL MERCHANT <span>NETWORK</span></div>
+    <div class="badge-year">PARTNERSHIP COMPLIANCE & FAQ</div>
+  </div>
+
+  <!-- SECTION: CORE ADVANTAGES WITH ILLUSTRATION ICONS -->
+  <div class="section-title">Key Partner Benefits</div>
+
+  <table class="grid-2col">
+    <tr>
+      <td class="card" style="width: 50%;">
+        <svg class="card-icon-box" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+        <h3>Zero Personal Liability</h3>
+        <p>All store liabilities, platform fees, operational costs, and inventory expenses are 100% absorbed by our management group. Your personal credit rating and financial standing remain fully protected.</p>
+      </td>
+
+      <td class="card" style="width: 50%;">
+        <svg class="card-icon-box" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2">
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+        </svg>
+        <h3>No Physical Warehousing</h3>
+        <p>You never handle physical products, manage packaging, or deal with international courier shipments. Our automated fulfillment centers handle all logistics from start to finish.</p>
+      </td>
+    </tr>
+    <tr>
+      <td class="card" style="width: 50%;">
+        <svg class="card-icon-box" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2">
+          <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+          <line x1="12" y1="18" x2="12.01" y2="18"></line>
+        </svg>
+        <h3>100% Remote Mobile Workflow</h3>
+        <p>Verification can be completed entirely on your smartphone using home Wi-Fi or cellular data. No physical reporting to offices or commuting required.</p>
+      </td>
+
+      <td class="card" style="width: 50%;">
+        <svg class="card-icon-box" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        <h3>Long-Term Recurring Payouts</h3>
+        <p>In addition to the immediate onboarding bonus, active accounts qualify for recurring 30-day store rental payments and net sales profit commission shares.</p>
+      </td>
+    </tr>
+  </table>
+
+  <!-- SECURITY & COMPLIANCE BANNER -->
+  <div class="security-banner">
+    <h3>Security, Privacy & Legal Compliance</h3>
+    <table class="sec-grid">
+      <tr>
+        <td class="sec-item">
+          <h4>🔒 Encrypted Submission</h4>
+          <p>Identity details are strictly encrypted and submitted exclusively to official marketplace platforms for seller verification.</p>
+        </td>
+        <td class="sec-item">
+          <h4>📜 Etsy Compliance</h4>
+          <p>Fully compliant with Etsy's official Terms of Service, identity verification standards, and legal registration frameworks.</p>
+        </td>
+        <td class="sec-item">
+          <h4>⚖️ Zero Tax Risk</h4>
+          <p>Our corporate framework ensures no individual debt exposure, credit risk, or negative tax liability for local partners.</p>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- FAQ SECTION -->
+  <div class="section-title">Frequently Asked Questions</div>
+
+  <table class="faq-table">
+    <tr>
+      <td class="faq-card">
+        <div class="faq-q">Q: Are there any hidden fees or out-of-pocket costs?</div>
+        <div class="faq-a">A: Absolutely zero. Partners never pay setup fees, maintenance costs, or inventory expenses at any point during the partnership.</div>
+      </td>
+      <td class="faq-card">
+        <div class="faq-q">Q: Do I need prior e-commerce or retail experience?</div>
+        <div class="faq-a">A: No prior experience is needed. Our professional backend team handles all store design, marketing campaigns, customer service, and order fulfillment.</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="faq-card">
+        <div class="faq-q">Q: Who is eligible to participate in Palawan?</div>
+        <div class="faq-a">A: Any Philippine resident aged 18 or above residing in Puerto Princesa, Roxas, Narra, or surrounding areas with a valid primary government ID.</div>
+      </td>
+      <td class="faq-card">
+        <div class="faq-q">Q: How fast do I receive the onboarding bonus?</div>
+        <div class="faq-a">A: Upon successful account verification, the initial ₱5,000–₱10,000 bonus is paid out immediately via GCash, Maya, or direct bank transfer.</div>
+      </td>
+    </tr>
+  </table>
+
+  <!-- CTA BOX -->
+  <div class="cta-box">
+    <h2>Ready to Secure Your Regional Candidate Slot?</h2>
+    <p>Candidate slots for Puerto Princesa & Palawan for 2026 are strictly limited to ensure dedicated support per partner.</p>
+    <a href="https://wa.me/639560137414" class="cta-btn">WhatsApp Onboarding Lead: +63 9560137414</a>
+  </div>
+
+</body>
+</html>
