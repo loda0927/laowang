@@ -1,547 +1,651 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <style>
-    @page {
-      size: A4 portrait;
-      margin: 12mm 15mm;
-      background-color: #f8fafc;
-    }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      color: #1e293b;
-      background-color: #f8fafc;
-      font-size: 8.5pt;
-      line-height: 1.5;
-    }
-
-    /* Header Nav */
-    .header-nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 2px solid #0284c7;
-      padding-bottom: 8px;
-      margin-bottom: 16px;
-    }
-    .brand-logo {
-      font-size: 11pt;
-      font-weight: 800;
-      color: #0f172a;
-      letter-spacing: 0.5px;
-    }
-    .brand-logo span {
-      color: #0284c7;
-    }
-    .badge-year {
-      background: #e0f2fe;
-      color: #0369a1;
-      font-size: 7.5pt;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 12px;
-      text-transform: uppercase;
-    }
-
-    /* Hero Banner */
-    .hero {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0369a1 100%);
-      color: #ffffff;
-      padding: 24px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
-    }
-    .hero-tag {
-      color: #38bdf8;
-      font-size: 8pt;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 6px;
-      display: block;
-    }
-    .hero h1 {
-      font-size: 18pt;
-      font-weight: 800;
-      line-height: 1.25;
-      margin-bottom: 8px;
-      color: #ffffff;
-    }
-    .hero-sub {
-      font-size: 9pt;
-      color: #cbd5e1;
-      line-height: 1.4;
-      margin-bottom: 16px;
-    }
-
-    /* Key Stats Grid */
-    .stats-table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 8px 0;
-    }
-    .stat-card {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      padding: 10px 8px;
-      border-radius: 8px;
-      text-align: center;
-      width: 25%;
-    }
-    .stat-val {
-      font-size: 12pt;
-      font-weight: 800;
-      color: #38bdf8;
-      display: block;
-    }
-    .stat-lbl {
-      font-size: 7pt;
-      color: #94a3b8;
-      text-transform: uppercase;
-      margin-top: 2px;
-    }
-
-    /* Section Component */
-    .section-title {
-      font-size: 12pt;
-      font-weight: 800;
-      color: #0f172a;
-      margin-bottom: 12px;
-      padding-left: 8px;
-      border-left: 4px solid #0284c7;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    /* Visual Grid Cards with SVG Illustrations */
-    .grid-2col {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 12px;
-      margin-bottom: 16px;
-    }
-    .card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 10px;
-      padding: 14px;
-      vertical-align: top;
-    }
-    .card-icon-box {
-      width: 36px;
-      height: 36px;
-      background: #f0f9ff;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 10px;
-    }
-    .card h3 {
-      font-size: 10pt;
-      font-weight: 700;
-      color: #0f172a;
-      margin-bottom: 6px;
-    }
-    .card p {
-      font-size: 8pt;
-      color: #64748b;
-      line-height: 1.45;
-    }
-
-    /* Step Process Block */
-    .pipeline-table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 8px;
-      margin-bottom: 20px;
-    }
-    .pipeline-step {
-      width: 20%;
-      background: #ffffff;
-      border: 1px solid #cbd5e1;
-      border-top: 4px solid #0284c7;
-      border-radius: 8px;
-      padding: 10px 8px;
-      vertical-align: top;
-      text-align: center;
-    }
-    .step-num {
-      font-size: 7.5pt;
-      font-weight: 800;
-      color: #0284c7;
-      background: #e0f2fe;
-      padding: 2px 6px;
-      border-radius: 4px;
-      display: inline-block;
-      margin-bottom: 6px;
-    }
-    .step-title {
-      font-size: 8.5pt;
-      font-weight: 700;
-      color: #0f172a;
-      margin-bottom: 4px;
-      line-height: 1.2;
-    }
-    .step-desc {
-      font-size: 7pt;
-      color: #64748b;
-      line-height: 1.3;
-    }
-
-    /* Page Break */
-    .page-break {
-      page-break-before: always;
-    }
-
-    /* Trust & Security Dark Card */
-    .security-banner {
-      background: #0f172a;
-      color: #ffffff;
-      border-radius: 10px;
-      padding: 16px;
-      margin-bottom: 20px;
-    }
-    .security-banner h3 {
-      color: #38bdf8;
-      font-size: 11pt;
-      font-weight: 800;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-    }
-    .sec-grid {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 12px 0;
-    }
-    .sec-item {
-      width: 33.33%;
-      vertical-align: top;
-    }
-    .sec-item h4 {
-      font-size: 8.5pt;
-      color: #f1f5f9;
-      margin-bottom: 4px;
-      font-weight: 700;
-    }
-    .sec-item p {
-      font-size: 7.5pt;
-      color: #94a3b8;
-      line-height: 1.35;
-    }
-
-    /* FAQ List */
-    .faq-table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 10px;
-      margin-bottom: 20px;
-    }
-    .faq-card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      padding: 12px;
-      width: 50%;
-      vertical-align: top;
-    }
-    .faq-q {
-      font-size: 8.5pt;
-      font-weight: 700;
-      color: #0f172a;
-      margin-bottom: 4px;
-    }
-    .faq-a {
-      font-size: 8pt;
-      color: #64748b;
-      line-height: 1.4;
-    }
-
-    /* CTA Box */
-    .cta-box {
-      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-      color: #ffffff;
-      border-radius: 12px;
-      padding: 20px;
-      text-align: center;
-      margin-top: 10px;
-    }
-    .cta-box h2 {
-      font-size: 13pt;
-      font-weight: 800;
-      margin-bottom: 6px;
-    }
-    .cta-box p {
-      font-size: 8.5pt;
-      color: #e0f2fe;
-      margin-bottom: 12px;
-    }
-    .cta-btn {
-      display: inline-block;
-      background: #ffffff;
-      color: #0369a1;
-      font-weight: 800;
-      font-size: 9pt;
-      padding: 8px 20px;
-      border-radius: 6px;
-      text-decoration: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etsy Local Partner Recruitment - Earn Up to ₱10,000 + Monthly Passive Income</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        },
+                        navy: {
+                            800: '#0f172a',
+                            900: '#090d16',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+        }
+        .bg-hero-pattern {
+            background: radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 20% 80%, rgba(14, 165, 233, 0.12) 0%, transparent 40%),
+                        linear-gradient(135deg, #090d16 0%, #0f172a 60%, #064e3b 100%);
+        }
+        .reward-card-glow {
+            box-shadow: 0 20px 50px -10px rgba(34, 197, 94, 0.25), 0 10px 30px -15px rgba(0,0,0,0.5);
+        }
+        .gold-badge {
+            background: linear-gradient(135deg, #fef08a 0%, #facc15 50%, #eab308 100%);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+    </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-emerald-500 selection:text-white">
 
-  <!-- PAGE 1: PROGRAM OVERVIEW & PROCESS -->
-
-  <!-- NAV -->
-  <div class="header-nav">
-    <div class="brand-logo">GLOBAL MERCHANT <span>NETWORK</span></div>
-    <div class="badge-year">OFFICIAL PROGRAM 2026</div>
-  </div>
-
-  <!-- HERO -->
-  <div class="hero">
-    <span class="hero-tag">ENTERPRISE E-COMMERCE COLLABORATION</span>
-    <h1>Palawan Remote Merchant Partner Program</h1>
-    <div class="hero-sub">
-      Establish a legitimate, high-reward passive income stream via global cross-border e-commerce networks. Lock in an immediate onboarding bonus plus monthly store rental payouts with zero personal capital required.
-    </div>
-
-    <!-- STATS -->
-    <table class="stats-table">
-      <tr>
-        <td class="stat-card">
-          <span class="stat-val">₱5,000+</span>
-          <span class="stat-lbl">Instant Approval Bonus</span>
-        </td>
-        <td class="stat-card">
-          <span class="stat-val">Monthly</span>
-          <span class="stat-lbl">Guaranteed Rent Payout</span>
-        </td>
-        <td class="stat-card">
-          <span class="stat-val">100% Zero</span>
-          <span class="stat-lbl">Out-Of-Pocket Expense</span>
-        </td>
-        <td class="stat-card">
-          <span class="stat-val">Zero Risk</span>
-          <span class="stat-lbl">Full Liability Protection</span>
-        </td>
-      </tr>
-    </table>
-  </div>
-
-  <!-- SECTION: PROGRAM OVERVIEW -->
-  <div class="section-title">Program Architecture & Operations</div>
-
-  <table class="grid-2col">
-    <tr>
-      <td class="card" style="width: 50%;">
-        <!-- SVG Icon: Global Trade -->
-        <svg class="card-icon-box" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="2" y1="12" x2="22" y2="12"></line>
-          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-        </svg>
-        <h3>Cross-Border E-Commerce Expansion</h3>
-        <p>Our merchant collective manages operational storefronts across major overseas platforms like Etsy. Due to international trade regulations, compliant storefronts require identity verification from residents in approved regions like the Philippines.</p>
-      </td>
-
-      <td class="card" style="width: 50%;">
-        <!-- SVG Icon: Merchant Capital -->
-        <svg class="card-icon-box" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2">
-          <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-          <line x1="2" y1="10" x2="22" y2="10"></line>
-        </svg>
-        <h3>Fully Funded Capital Structure</h3>
-        <p>Our backend team handles 100% of the operational capital, marketing ad spend, product sourcing, warehousing, and international logistics. Partners bear zero operational expenses or debt liability.</p>
-      </td>
-    </tr>
-  </table>
-
-  <!-- SECTION: PIPELINE -->
-  <div class="section-title">5-Stage Onboarding Process</div>
-
-  <table class="pipeline-table">
-    <tr>
-      <td class="pipeline-step">
-        <span class="step-num">STAGE 01</span>
-        <!-- SVG Step 1 -->
-        <div style="margin: 6px 0;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2">
-            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-          </svg>
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white shadow-md shadow-emerald-500/20">
+                    <i class="fa-solid fa-earth-asia text-xl"></i>
+                </div>
+                <div>
+                    <span class="font-extrabold text-xl tracking-tight text-slate-900 block leading-tight">GlobalCross</span>
+                    <span class="text-[10px] uppercase font-bold tracking-widest text-emerald-600 block">E-Commerce Partner Network</span>
+                </div>
+            </div>
+            <a href="https://wa.me/639560137414" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-lg shadow-emerald-600/25 hover:shadow-emerald-600/40 flex items-center gap-2 group">
+                <i class="fa-brands fa-whatsapp text-lg group-hover:scale-110 transition-transform"></i>
+                <span>Chat on WhatsApp</span>
+            </a>
         </div>
-        <div class="step-title">Direct Outreach</div>
-        <div class="step-desc">Connect with regional lead via WhatsApp to verify slot availability.</div>
-      </td>
+    </header>
 
-      <td class="pipeline-step">
-        <span class="step-num">STAGE 02</span>
-        <!-- SVG Step 2 -->
-        <div style="margin: 6px 0;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2">
-            <rect x="3" y="4" width="18" height="16" rx="2"></rect>
-            <circle cx="9" cy="10" r="2"></circle>
-            <line x1="15" y1="8" x2="17" y2="8"></line>
-            <line x1="15" y1="12" x2="17" y2="12"></line>
-          </svg>
+    <!-- Hero / Banner Section -->
+    <section class="bg-hero-pattern text-white py-16 lg:py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Title & Pitch -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        Official Local Partnership Program • Philippines
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.15] tracking-tight">
+                        Earn Up To <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300">₱10,000</span> Instantly In Just 1 Hour!
+                    </h1>
+                    
+                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+                        Partner with a $100M+ global cross-border enterprise. Simply assist us with Etsy store verification—no operations required from you. Get paid immediately upon store setup, plus secure passive monthly store rent!
+                    </p>
+
+                    <div class="pt-2 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="https://wa.me/639560137414" target="_blank" class="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-extrabold px-8 py-4 rounded-2xl shadow-xl shadow-emerald-500/25 transition-all transform hover:-translate-y-0.5 text-center flex items-center justify-center gap-3 text-lg">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            <span>Apply Now via WhatsApp</span>
+                        </a>
+                        <div class="flex items-center justify-center gap-2 text-slate-400 text-sm py-2">
+                            <i class="fa-solid fa-shield-halved text-emerald-400"></i>
+                            <span>100% Legal, Safe & Zero Investment</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Redesigned Grand Partner Reward Block -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="w-full max-w-md relative">
+                        <!-- Background Glow -->
+                        <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 via-teal-500 to-amber-400 rounded-3xl blur-xl opacity-40"></div>
+                        
+                        <div class="relative bg-slate-900 border border-slate-700/80 rounded-3xl p-6 sm:p-8 text-white reward-card-glow">
+                            
+                            <!-- Header Badge -->
+                            <div class="flex items-center justify-between pb-6 border-b border-slate-800">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-400 to-emerald-500 p-0.5 shadow-lg shadow-amber-500/20">
+                                        <div class="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center text-amber-400 text-2xl">
+                                            <i class="fa-solid fa-award"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs uppercase font-bold text-emerald-400 tracking-wider">Verified Program</span>
+                                        <h3 class="text-2xl font-black text-white">Partner Reward</h3>
+                                    </div>
+                                </div>
+                                <span class="gold-badge text-slate-950 font-extrabold text-xs px-3 py-1.5 rounded-full shadow-md uppercase">
+                                    Top Tier
+                                </span>
+                            </div>
+
+                            <!-- Reward Breakdown Cards -->
+                            <div class="py-6 space-y-4">
+                                
+                                <!-- Tier 1: Immediate Commission -->
+                                <div class="glass-panel p-4 rounded-2xl relative overflow-hidden border-l-4 border-l-emerald-400">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <span class="text-xs font-semibold text-emerald-300 uppercase tracking-wide">Phase 1: Instant Cashout</span>
+                                            <div class="text-xl font-extrabold text-white mt-0.5">Verification Bonus</div>
+                                            <div class="text-xs text-slate-400 mt-1">Paid directly upon shop approval (~1 hr)</div>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-2xl font-black text-emerald-400">₱5,000</div>
+                                            <div class="text-xs font-bold text-amber-300">up to ₱10,000</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Tier 2: Monthly Passive Rent -->
+                                <div class="glass-panel p-4 rounded-2xl relative overflow-hidden border-l-4 border-l-teal-400">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <span class="text-xs font-semibold text-teal-300 uppercase tracking-wide">Phase 2: Recurring Earnings</span>
+                                            <div class="text-xl font-extrabold text-white mt-0.5">Monthly Store Rent</div>
+                                            <div class="text-xs text-slate-400 mt-1">Guaranteed fixed rental payout every month</div>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-xl font-black text-teal-300">₱2,000–₱5,000</div>
+                                            <div class="text-[10px] font-medium text-slate-400">Per Month</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Tier 3: Long-term Profit Share -->
+                                <div class="glass-panel p-4 rounded-2xl relative overflow-hidden border-l-4 border-l-amber-400">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <span class="text-xs font-semibold text-amber-300 uppercase tracking-wide">Phase 3: Long-Term Partner</span>
+                                            <div class="text-xl font-extrabold text-white mt-0.5">Profit Share Dividend</div>
+                                            <div class="text-xs text-slate-400 mt-1">Earn sales revenue cut for stable partners</div>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-xl font-black text-amber-300">5% – 10%</div>
+                                            <div class="text-[10px] font-medium text-slate-400">Monthly Revenue</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Footer Trust Note -->
+                            <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+                                <span class="flex items-center gap-1.5"><i class="fa-solid fa-clock-rotate-left text-emerald-400"></i> ~1 Hr Setup</span>
+                                <span class="flex items-center gap-1.5"><i class="fa-solid fa-wallet text-emerald-400"></i> GCash / Bank Pay</span>
+                                <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-400"></i> No Experience</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <div class="step-title">ID Preparation</div>
-        <div class="step-desc">Prepare 1 valid Ph government ID (PhilID, UMID, Passport, Driver's).</div>
-      </td>
+    </section>
 
-      <td class="pipeline-step">
-        <span class="step-num">STAGE 03</span>
-        <!-- SVG Step 3 -->
-        <div style="margin: 6px 0;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-          </svg>
+    <!-- 2. Target Audience & Detailed Requirements -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-emerald-600 font-extrabold text-xs uppercase tracking-widest bg-emerald-50 px-3.5 py-1.5 rounded-full border border-emerald-100">Inclusive Opportunity</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Who Are We Looking For?</h2>
+                <p class="text-slate-600 mt-3 text-base sm:text-lg">Whether you are looking for emergency cash or a reliable extra income stream, our program is designed for everyday Filipinos.</p>
+            </div>
+
+            <!-- Target Audience Persona Grid -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                
+                <!-- Persona 1: Students -->
+                <div class="bg-slate-50 hover:bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-indigo-100 group-hover:bg-indigo-600 text-indigo-600 group-hover:text-white rounded-2xl flex items-center justify-center text-2xl transition-all mb-5">
+                        <i class="fa-solid fa-user-graduate"></i>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-slate-900 mb-2">College Students</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Need money for tuition, project fees, allowance, or savings? Participate during break hours without sacrificing your study schedule or exams.
+                    </p>
+                    <div class="inline-flex items-center text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md">
+                        <i class="fa-solid fa-bolt mr-1"></i> Flexible & Fast Allowance
+                    </div>
+                </div>
+
+                <!-- Persona 2: Stay-at-Home Moms -->
+                <div class="bg-slate-50 hover:bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-pink-100 group-hover:bg-pink-600 text-pink-600 group-hover:text-white rounded-2xl flex items-center justify-center text-2xl transition-all mb-5">
+                        <i class="fa-solid fa-baby-carriage"></i>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-slate-900 mb-2">Stay-at-Home Moms</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Want to contribute to household expenses, milk supplies, and family bills? Work right from your smartphone at home while caring for your kids.
+                    </p>
+                    <div class="inline-flex items-center text-xs font-bold text-pink-600 bg-pink-50 px-2.5 py-1 rounded-md">
+                        <i class="fa-solid fa-heart mr-1"></i> Family Extra Income
+                    </div>
+                </div>
+
+                <!-- Persona 3: Unemployed / Job Seekers -->
+                <div class="bg-slate-50 hover:bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-amber-100 group-hover:bg-amber-600 text-amber-600 group-hover:text-white rounded-2xl flex items-center justify-center text-2xl transition-all mb-5">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-slate-900 mb-2">Unemployed & Job Seekers</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        In urgent need of cash payouts while searching for employment? Get instant commission payout as soon as store verification completes.
+                    </p>
+                    <div class="inline-flex items-center text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-md">
+                        <i class="fa-solid fa-hand-holding-dollar mr-1"></i> Immediate Cash Flow
+                    </div>
+                </div>
+
+                <!-- Persona 4: Part-timers & Freelancers -->
+                <div class="bg-slate-50 hover:bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-emerald-100 group-hover:bg-emerald-600 text-emerald-600 group-hover:text-white rounded-2xl flex items-center justify-center text-2xl transition-all mb-5">
+                        <i class="fa-solid fa-clock text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-slate-900 mb-2">Side-Hustle Seekers</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Already have a job but want a zero-effort passive income stream? Earn recurring monthly store rental fees without ongoing labor.
+                    </p>
+                    <div class="inline-flex items-center text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md">
+                        <i class="fa-solid fa-arrow-trend-up mr-1"></i> Passive Monthly Rent
+                    </div>
+                </div>
+
+                <!-- Persona 5: Aspiring Entrepreneurs -->
+                <div class="bg-slate-50 hover:bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-xl transition-all duration-300 group md:col-span-2">
+                    <div class="flex flex-col sm:flex-row items-start gap-5">
+                        <div class="w-14 h-14 bg-teal-100 group-hover:bg-teal-600 text-teal-600 group-hover:text-white rounded-2xl flex items-center justify-center text-2xl shrink-0 transition-all">
+                            <i class="fa-solid fa-rocket"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-extrabold text-slate-900 mb-2">Aspiring Entrepreneurs (No Capital Required)</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                                Planning to start a business or e-commerce store but lack startup capital? Build seed capital cleanly through our partner reward program, and learn how international cross-border e-commerce works firsthand.
+                            </p>
+                            <div class="inline-flex items-center text-xs font-bold text-teal-700 bg-teal-50 px-2.5 py-1 rounded-md">
+                                <i class="fa-solid fa-shield-check mr-1"></i> Zero Risk Startup Boost
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Qualification Criteria Box -->
+            <div class="bg-slate-900 text-white rounded-3xl p-8 sm:p-10 border border-slate-800 shadow-2xl relative overflow-hidden">
+                <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl"></div>
+                <div class="relative z-10">
+                    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-6 border-b border-slate-800 mb-8">
+                        <div>
+                            <span class="text-emerald-400 font-bold text-xs uppercase tracking-widest">Simple Checklist</span>
+                            <h3 class="text-2xl sm:text-3xl font-extrabold mt-1">Applicant Requirements</h3>
+                        </div>
+                        <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-4 py-1.5 rounded-full text-xs font-semibold">
+                            Strict Compliance • Safe & Secure
+                        </span>
+                    </div>
+
+                    <div class="grid sm:grid-cols-3 gap-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg shrink-0 mt-0.5">
+                                <i class="fa-solid fa-flag"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-base text-white">Philippine Citizen</h4>
+                                <p class="text-xs text-slate-400 mt-1">Must be a legal resident in the Philippines with valid government ID (PhilID, Driver's License, UMID, Passport, etc.).</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg shrink-0 mt-0.5">
+                                <i class="fa-solid fa-calendar-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-base text-white">Age Requirement</h4>
+                                <p class="text-xs text-slate-400 mt-1">Must be between <strong>18 and 45 years old</strong> to meet international platform registration guidelines.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg shrink-0 mt-0.5">
+                                <i class="fa-solid fa-handshake-simple"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-base text-white">Basic Cooperation</h4>
+                                <p class="text-xs text-slate-400 mt-1">Able to spend ~1 hour communicating on WhatsApp and assisting our agent to complete real-name video/ID shop verification.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div class="step-title">Identity Validation</div>
-        <div class="step-desc">Complete 1-hour official seller verification with staff guidance.</div>
-      </td>
+    </section>
 
-      <td class="pipeline-step">
-        <span class="step-num">STAGE 04</span>
-        <!-- SVG Step 4 -->
-        <div style="margin: 6px 0;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2">
-            <line x1="12" y1="1" x2="12" y2="23"></line>
-            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-          </svg>
+    <!-- 3. Redesigned 5-Step Process with Visual Cards & Icons -->
+    <section class="py-20 bg-slate-100/70 border-y border-slate-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-emerald-600 font-extrabold text-xs uppercase tracking-widest bg-emerald-100/80 px-3.5 py-1.5 rounded-full">Streamlined Workflow</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Simple 5-Step Earning Process</h2>
+                <p class="text-slate-600 mt-3 text-base sm:text-lg">Transparent and fast. From first message to cash payout in approximately 1 hour.</p>
+            </div>
+
+            <!-- Steps Grid -->
+            <div class="grid md:grid-cols-5 gap-4 lg:gap-6 relative">
+                
+                <!-- Step 1 Card -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between relative group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-100">Step One</span>
+                            <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">Connect & Qualify</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Message our recruitment manager on WhatsApp to confirm your eligibility and answer a few basic questions.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-semibold text-slate-400 flex items-center gap-1">
+                        <i class="fa-regular fa-clock text-emerald-500"></i> ~5 Mins
+                    </div>
+                </div>
+
+                <!-- Step 2 Card -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between relative group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[11px] font-extrabold uppercase tracking-wider text-teal-700 bg-teal-50 px-2.5 py-1 rounded-md border border-teal-100">Step Two</span>
+                            <div class="w-10 h-10 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center text-lg group-hover:bg-teal-600 group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-file-signature"></i>
+                            </div>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">Submit Info</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Provide basic store registration details required by Etsy (valid Philippine government ID & contact).
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-semibold text-slate-400 flex items-center gap-1">
+                        <i class="fa-regular fa-clock text-teal-500"></i> ~10 Mins
+                    </div>
+                </div>
+
+                <!-- Step 3 Card -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between relative group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[11px] font-extrabold uppercase tracking-wider text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-md border border-indigo-100">Step Three</span>
+                            <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-lg group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-user-check"></i>
+                            </div>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">Shop Verification</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Coordinate with our recruitment specialist to complete facial recognition and identity verification steps.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-semibold text-slate-400 flex items-center gap-1">
+                        <i class="fa-regular fa-clock text-indigo-500"></i> ~45 Mins
+                    </div>
+                </div>
+
+                <!-- Step 4 Card -->
+                <div class="bg-white p-6 rounded-2xl border-2 border-emerald-500/80 shadow-md hover:shadow-xl transition-all flex flex-col justify-between relative group">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-500 text-white text-[10px] uppercase font-black px-2.5 py-0.5 rounded-full shadow-xs">
+                        Instant Reward
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between mb-4 mt-1">
+                            <span class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md">Step Four</span>
+                            <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-sack-dollar"></i>
+                            </div>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">Get Paid Cash</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Receive your <strong>₱5,000 to ₱10,000 commission</strong> directly to your GCash or Bank Account immediately upon approval.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-bold text-emerald-600 flex items-center gap-1">
+                        <i class="fa-solid fa-bolt"></i> Instant Disbursement
+                    </div>
+                </div>
+
+                <!-- Step 5 Card -->
+                <div class="bg-slate-900 text-white p-6 rounded-2xl border border-slate-800 shadow-lg flex flex-col justify-between relative group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[11px] font-extrabold uppercase tracking-wider text-amber-300 bg-amber-500/20 px-2.5 py-1 rounded-md border border-amber-500/30">Step Five</span>
+                            <div class="w-10 h-10 rounded-xl bg-slate-800 text-amber-400 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-arrows-rotate"></i>
+                            </div>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">Monthly Income</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Once the store is live, receive monthly store rental payouts plus profit dividends for long-term partners.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-800 text-[11px] font-bold text-amber-400 flex items-center gap-1">
+                        <i class="fa-solid fa-calendar-check"></i> Lifetime Recurring
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <div class="step-title">Instant Payout</div>
-        <div class="step-desc">Receive ₱5,000–₱10,000 bonus via GCash, Maya, or direct bank transfer.</div>
-      </td>
+    </section>
 
-      <td class="pipeline-step">
-        <span class="step-num">STAGE 05</span>
-        <!-- SVG Step 5 -->
-        <div style="margin: 6px 0;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2">
-            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-            <polyline points="17 6 23 6 23 12"></polyline>
-          </svg>
+    <!-- 4 & 5. About Etsy & Company Guarantee -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Etsy Introduction -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="inline-flex items-center gap-2 text-orange-600 font-extrabold bg-orange-50 px-3.5 py-1.5 rounded-full text-xs uppercase tracking-wider">
+                        <i class="fa-solid fa-store"></i> What is Etsy?
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight">
+                        A World-Leading U.S. E-Commerce Marketplace
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed text-base">
+                        Etsy is an American NASDAQ-listed e-commerce platform specializing in handmade, vintage, and creative lifestyle products. It connects over 100+ million active buyers worldwide and operates under strict international financial and security standards.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 pt-2">
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                            <div class="text-2xl font-black text-slate-900">100M+</div>
+                            <div class="text-xs font-semibold text-slate-500 mt-1">Global Active Buyers</div>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                            <div class="text-2xl font-black text-emerald-600">NASDAQ: ETSY</div>
+                            <div class="text-xs font-semibold text-slate-500 mt-1">Publicly Traded U.S. Tech Firm</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Company Trust Guarantee -->
+                <div class="lg:col-span-6">
+                    <div class="bg-gradient-to-br from-slate-900 via-slate-900 to-emerald-950 text-white p-8 sm:p-10 rounded-3xl relative overflow-hidden shadow-2xl border border-slate-800">
+                        <div class="absolute top-0 right-0 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl"></div>
+                        
+                        <div class="relative z-10 space-y-6">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-shield-halved"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-extrabold text-white">Trust & Security Guarantee</h3>
+                                    <p class="text-xs text-emerald-400 font-semibold uppercase tracking-wider">GlobalCross Enterprise Commitment</p>
+                                </div>
+                            </div>
+
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                We are an established cross-border e-commerce company generating over <strong class="text-emerald-400 font-bold">$100 Million USD in annual sales</strong>. We manage stores across major international retail channels.
+                            </p>
+
+                            <div class="space-y-3 pt-2">
+                                <div class="flex items-start gap-3 text-sm text-slate-200">
+                                    <i class="fa-solid fa-circle-check text-emerald-400 mt-1 shrink-0"></i>
+                                    <span><strong>Multi-Platform Operations:</strong> Etsy, Amazon, Walmart, eBay, TikTok Shop, etc.</span>
+                                </div>
+                                <div class="flex items-start gap-3 text-sm text-slate-200">
+                                    <i class="fa-solid fa-circle-check text-emerald-400 mt-1 shrink-0"></i>
+                                    <span><strong>Legitimate Categories:</strong> Everyday home goods, cosmetics, lifestyle products—100% legal & compliant.</span>
+                                </div>
+                                <div class="flex items-start gap-3 text-sm text-slate-200">
+                                    <i class="fa-solid fa-circle-check text-emerald-400 mt-1 shrink-0"></i>
+                                    <span><strong>Instant Payout Promise:</strong> Complete verification to receive cash reward promptly.</span>
+                                </div>
+                            </div>
+
+                            <div class="pt-4 border-t border-slate-800 text-xs text-slate-400 flex items-center justify-between">
+                                <span><i class="fa-solid fa-lock text-emerald-400 mr-1"></i> Data Privacy Protected</span>
+                                <span><i class="fa-solid fa-check-double text-emerald-400 mr-1"></i> No Hidden Fees</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <div class="step-title">Monthly Allowance</div>
-        <div class="step-desc">Lock in fixed 30-day rental checks plus performance profit shares.</div>
-      </td>
-    </tr>
-  </table>
+    </section>
 
-  <!-- PAGE BREAK FOR SPACIOUS MULTI-PAGE LAYOUT -->
-  <div class="page-break"></div>
+    <!-- 6. Frequently Asked Questions (FAQ) -->
+    <section class="py-20 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-emerald-600 font-extrabold text-xs uppercase tracking-widest bg-emerald-100 px-3.5 py-1.5 rounded-full">Got Questions?</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Frequently Asked Questions</h2>
+                <p class="text-slate-600 mt-2 text-sm sm:text-base">Everything you need to know about becoming an Etsy shop partner.</p>
+            </div>
 
-  <!-- PAGE 2: ADVANTAGES, SECURITY & FAQ -->
+            <div class="space-y-4">
+                
+                <!-- FAQ 1 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition-shadow">
+                    <h4 class="font-extrabold text-slate-900 text-base sm:text-lg flex items-center gap-3">
+                        <i class="fa-solid fa-circle-question text-emerald-600 text-xl shrink-0"></i>
+                        <span>Do I need to manage or operate the Etsy store myself?</span>
+                    </h4>
+                    <p class="text-slate-600 mt-3 text-sm pl-8 leading-relaxed">
+                        No, absolutely not. Your role is solely assisting with the shop application and identity verification. Once verified, our professional international operations team handles product listing, customer service, shipping, and order management.
+                    </p>
+                </div>
 
-  <div class="header-nav">
-    <div class="brand-logo">GLOBAL MERCHANT <span>NETWORK</span></div>
-    <div class="badge-year">PARTNERSHIP COMPLIANCE & FAQ</div>
-  </div>
+                <!-- FAQ 2 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition-shadow">
+                    <h4 class="font-extrabold text-slate-900 text-base sm:text-lg flex items-center gap-3">
+                        <i class="fa-solid fa-circle-question text-emerald-600 text-xl shrink-0"></i>
+                        <span>How long does the shop setup process take?</span>
+                    </h4>
+                    <p class="text-slate-600 mt-3 text-sm pl-8 leading-relaxed">
+                        The entire process requires roughly 1 hour of your time to coordinate with our agent and perform verification.
+                    </p>
+                </div>
 
-  <!-- SECTION: CORE ADVANTAGES WITH ILLUSTRATION ICONS -->
-  <div class="section-title">Key Partner Benefits</div>
+                <!-- FAQ 3 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition-shadow">
+                    <h4 class="font-extrabold text-slate-900 text-base sm:text-lg flex items-center gap-3">
+                        <i class="fa-solid fa-circle-question text-emerald-600 text-xl shrink-0"></i>
+                        <span>Is there any financial risk or upfront fee required from me?</span>
+                    </h4>
+                    <p class="text-slate-600 mt-3 text-sm pl-8 leading-relaxed">
+                        Zero cost and zero financial risk. You do not need to invest any money, purchase inventory, or pay registration fees. We cover all operational costs.
+                    </p>
+                </div>
 
-  <table class="grid-2col">
-    <tr>
-      <td class="card" style="width: 50%;">
-        <svg class="card-icon-box" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-        </svg>
-        <h3>Zero Personal Liability</h3>
-        <p>All store liabilities, platform fees, operational costs, and inventory expenses are 100% absorbed by our management group. Your personal credit rating and financial standing remain fully protected.</p>
-      </td>
+                <!-- FAQ 4 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition-shadow">
+                    <h4 class="font-extrabold text-slate-900 text-base sm:text-lg flex items-center gap-3">
+                        <i class="fa-solid fa-circle-question text-emerald-600 text-xl shrink-0"></i>
+                        <span>How will I receive my ₱5,000–₱10,000 payout?</span>
+                    </h4>
+                    <p class="text-slate-600 mt-3 text-sm pl-8 leading-relaxed">
+                        Payouts are issued directly to your preferred Philippine e-wallet (such as GCash or Maya) or local bank account as soon as the store verification passes successfully.
+                    </p>
+                </div>
 
-      <td class="card" style="width: 50%;">
-        <svg class="card-icon-box" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2">
-          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-        </svg>
-        <h3>No Physical Warehousing</h3>
-        <p>You never handle physical products, manage packaging, or deal with international courier shipments. Our automated fulfillment centers handle all logistics from start to finish.</p>
-      </td>
-    </tr>
-    <tr>
-      <td class="card" style="width: 50%;">
-        <svg class="card-icon-box" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2">
-          <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-          <line x1="12" y1="18" x2="12.01" y2="18"></line>
-        </svg>
-        <h3>100% Remote Mobile Workflow</h3>
-        <p>Verification can be completed entirely on your smartphone using home Wi-Fi or cellular data. No physical reporting to offices or commuting required.</p>
-      </td>
+                <!-- FAQ 5 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition-shadow">
+                    <h4 class="font-extrabold text-slate-900 text-base sm:text-lg flex items-center gap-3">
+                        <i class="fa-solid fa-circle-question text-emerald-600 text-xl shrink-0"></i>
+                        <span>How does the monthly store rent and profit sharing work?</span>
+                    </h4>
+                    <p class="text-slate-600 mt-3 text-sm pl-8 leading-relaxed">
+                        After the store goes live and active, we pay you a fixed monthly rental fee for store usage. For reliable long-term partners, you will also receive a percentage share of the store's monthly profit dividends.
+                    </p>
+                </div>
 
-      <td class="card" style="width: 50%;">
-        <svg class="card-icon-box" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2">
-          <circle cx="12" cy="12" r="10"></circle>
-          <polyline points="12 6 12 12 16 14"></polyline>
-        </svg>
-        <h3>Long-Term Recurring Payouts</h3>
-        <p>In addition to the immediate onboarding bonus, active accounts qualify for recurring 30-day store rental payments and net sales profit commission shares.</p>
-      </td>
-    </tr>
-  </table>
+                <!-- FAQ 6 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition-shadow">
+                    <h4 class="font-extrabold text-slate-900 text-base sm:text-lg flex items-center gap-3">
+                        <i class="fa-solid fa-circle-question text-emerald-600 text-xl shrink-0"></i>
+                        <span>What products are sold in the store? Are they legal?</span>
+                    </h4>
+                    <p class="text-slate-600 mt-3 text-sm pl-8 leading-relaxed">
+                        We sell 100% legal everyday consumer products including home décor, beauty supplies, lifestyle accessories, and daily necessities. All products fully comply with local and international trade laws.
+                    </p>
+                </div>
 
-  <!-- SECURITY & COMPLIANCE BANNER -->
-  <div class="security-banner">
-    <h3>Security, Privacy & Legal Compliance</h3>
-    <table class="sec-grid">
-      <tr>
-        <td class="sec-item">
-          <h4>🔒 Encrypted Submission</h4>
-          <p>Identity details are strictly encrypted and submitted exclusively to official marketplace platforms for seller verification.</p>
-        </td>
-        <td class="sec-item">
-          <h4>📜 Etsy Compliance</h4>
-          <p>Fully compliant with Etsy's official Terms of Service, identity verification standards, and legal registration frameworks.</p>
-        </td>
-        <td class="sec-item">
-          <h4>⚖️ Zero Tax Risk</h4>
-          <p>Our corporate framework ensures no individual debt exposure, credit risk, or negative tax liability for local partners.</p>
-        </td>
-      </tr>
-    </table>
-  </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- FAQ SECTION -->
-  <div class="section-title">Frequently Asked Questions</div>
+    <!-- 7. Footer Call To Action & Official WhatsApp Contact -->
+    <section class="py-20 bg-hero-pattern text-white text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+            <span class="text-emerald-400 font-extrabold text-xs uppercase tracking-widest bg-emerald-500/10 px-4 py-1.5 rounded-full border border-emerald-500/20">Get Started Today</span>
+            
+            <h2 class="text-3xl sm:text-5xl font-extrabold mt-4 mb-4 tracking-tight">
+                Ready to Earn Extra Income Today?
+            </h2>
+            <p class="text-slate-300 text-base sm:text-lg mb-10 max-w-xl mx-auto font-normal">
+                Contact our recruitment manager directly via WhatsApp. Takes only 1 hour to get verified and collect your payout!
+            </p>
 
-  <table class="faq-table">
-    <tr>
-      <td class="faq-card">
-        <div class="faq-q">Q: Are there any hidden fees or out-of-pocket costs?</div>
-        <div class="faq-a">A: Absolutely zero. Partners never pay setup fees, maintenance costs, or inventory expenses at any point during the partnership.</div>
-      </td>
-      <td class="faq-card">
-        <div class="faq-q">Q: Do I need prior e-commerce or retail experience?</div>
-        <div class="faq-a">A: No prior experience is needed. Our professional backend team handles all store design, marketing campaigns, customer service, and order fulfillment.</div>
-      </td>
-    </tr>
-    <tr>
-      <td class="faq-card">
-        <div class="faq-q">Q: Who is eligible to participate in Palawan?</div>
-        <div class="faq-a">A: Any Philippine resident aged 18 or above residing in Puerto Princesa, Roxas, Narra, or surrounding areas with a valid primary government ID.</div>
-      </td>
-      <td class="faq-card">
-        <div class="faq-q">Q: How fast do I receive the onboarding bonus?</div>
-        <div class="faq-a">A: Upon successful account verification, the initial ₱5,000–₱10,000 bonus is paid out immediately via GCash, Maya, or direct bank transfer.</div>
-      </td>
-    </tr>
-  </table>
+            <div class="inline-block bg-white text-slate-900 p-8 rounded-3xl shadow-2xl max-w-sm w-full border border-slate-100">
+                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-3xl shadow-inner">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <div class="text-xs text-slate-400 uppercase tracking-widest font-extrabold mb-1">Official Recruitment WhatsApp</div>
+                <div class="text-2xl font-black text-slate-900 tracking-tight mb-5">+63 9560137414</div>
+                
+                <a href="https://wa.me/639560137414" target="_blank" class="block w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-4 rounded-xl transition-all shadow-lg shadow-emerald-600/30 hover:shadow-emerald-600/50 flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <span>Start Chat on WhatsApp</span>
+                </a>
+            </div>
 
-  <!-- CTA BOX -->
-  <div class="cta-box">
-    <h2>Ready to Secure Your Regional Candidate Slot?</h2>
-    <p>Candidate slots for Puerto Princesa & Palawan for 2026 are strictly limited to ensure dedicated support per partner.</p>
-    <a href="https://wa.me/639560137414" class="cta-btn">WhatsApp Onboarding Lead: +63 9560137414</a>
-  </div>
+            <div class="mt-14 text-slate-400 text-xs border-t border-slate-800/80 pt-8">
+                © 2026 GlobalCross E-Commerce Co., Ltd. All Rights Reserved. • Philippines Partner Network
+            </div>
+        </div>
+    </section>
 
 </body>
 </html>
